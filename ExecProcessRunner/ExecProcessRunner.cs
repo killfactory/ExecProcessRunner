@@ -7,7 +7,7 @@ namespace Killfactory.Tools.Exec
 {
     public static class ProcessRunner
     {
-        public static ProcessExecutionResult RunProcess(string fileName, string arguments = null)
+        public static ProcessExecutionResult RunProcess(string fileName, string arguments = null, int timeout = default(int))
         {
             var outputBuilder = new List<string>();
             var errorOutputBuilder = new List<string>();
@@ -41,7 +41,18 @@ namespace Killfactory.Tools.Exec
                 process.Start();
                 process.BeginErrorReadLine();
                 process.BeginOutputReadLine();
-                process.WaitForExit();
+                if (timeout != default(int))
+                {
+                    if (!process.WaitForExit(timeout))
+                    {
+                        process.Kill();
+                        throw new TimeoutException();
+                    }
+                }
+                else
+                {
+                    process.WaitForExit();
+                }
                 var processExecutionResult = new ProcessExecutionResult
                 {
                     ExitCode = process.ExitCode,
