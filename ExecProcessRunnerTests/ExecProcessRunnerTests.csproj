@@ -45,8 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExecProcessRunnerTests.cs" />
+    <Compile Include="SimpleTests.cs" />
     <Compile Include="ProcessExtensions.cs" />
+    <Compile Include="TimeoutTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

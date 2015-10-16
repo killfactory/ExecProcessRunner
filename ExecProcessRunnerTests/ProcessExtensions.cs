@@ -28,7 +28,16 @@ namespace ExecProcessRunnerTests
                     {
                         // retrieve the process
                         var childId = Convert.ToInt32(data);
-                        var childProcess = Process.GetProcessById(childId);
+                        Process childProcess = null;
+                        try
+                        {
+                            childProcess = Process.GetProcessById(childId);
+                        }
+                        catch (ArgumentException)
+                        {
+                            
+                        }
+                       
 
                         // ensure the current process is still live
                         if (childProcess != null)
