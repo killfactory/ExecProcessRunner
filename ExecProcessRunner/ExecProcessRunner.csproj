@@ -7,8 +7,8 @@
     <ProjectGuid>{059F4DF6-F3EF-4FBF-81F1-6C194ACB185D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExecProcessRunner</RootNamespace>
-    <AssemblyName>ExecProcessRunner</AssemblyName>
+    <RootNamespace>Killfactory.Tools.Exec</RootNamespace>
+    <AssemblyName>Killfactory.Tools.Exec</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExecProcessRunner.cs" />
+    <Compile Include="ProcessExecutionResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
