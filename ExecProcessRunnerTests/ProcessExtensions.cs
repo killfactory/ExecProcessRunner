@@ -33,12 +33,8 @@ namespace ExecProcessRunnerTests
                         {
                             childProcess = Process.GetProcessById(childId);
                         }
-                        catch (ArgumentException)
-                        {
-                            
-                        }
-                       
-
+                        catch (ArgumentException) { }
+     
                         // ensure the current process is still live
                         if (childProcess != null)
                             results.Add(childProcess);
@@ -46,26 +42,6 @@ namespace ExecProcessRunnerTests
                 }
             }
             return results;
-        }
-        /// <summary>
-        /// Get the Parent Process ID for a given process
-        /// </summary>
-        /// <param name="process"></param>
-        /// <returns></returns>
-        public static int? GetParentId(this Process process)
-        {
-            // query the management system objects
-            string queryText = string.Format("select parentprocessid from win32_process where processid = {0}", process.Id);
-            using (var searcher = new ManagementObjectSearcher(queryText))
-            {
-                foreach (var obj in searcher.Get())
-                {
-                    object data = obj.Properties["parentprocessid"].Value;
-                    if (data != null)
-                        return Convert.ToInt32(data);
-                }
-            }
-            return null;
         }
     }
 }
